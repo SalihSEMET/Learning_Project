@@ -7,6 +7,9 @@ import { CartProvider } from './Context/CartContext';
 import ProductList from './Pages/ProductList';
 import ProductDetail from './Pages/ProductDetail';
 import CartPage from './Pages/CartPage';
+import EmailVerify from './Pages/EmailVerify';
+import RegisterPage from './Pages/RegisterPage';
+import LoginPage from './Pages/LoginPage';
 
 const HomePage = () => (
   <Container className="text-center mt-5">
@@ -28,6 +31,9 @@ function App() {
           <Route path="/category/:categoryId" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/email-verify" element={<EmailVerify />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </MainLayout>
     </CartProvider>
