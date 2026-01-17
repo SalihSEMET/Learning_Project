@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TechMarket.Entity;
+using TechMarket.Entity.Entities;
 
 namespace TechMarket.DataAccess
 {
-    public class TechMarketDbContext : DbContext
+    public class TechMarketDbContext : IdentityDbContext<AppUser>
     {
         public TechMarketDbContext(DbContextOptions<TechMarketDbContext> options) : base(options)
         {

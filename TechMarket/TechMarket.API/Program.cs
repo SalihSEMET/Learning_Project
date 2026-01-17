@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using TechMarket.Entity.Entities;
 using TechMarket.Business;
 using TechMarket.DataAccess;
 
@@ -13,6 +15,17 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod());
 });
 builder.Services.AddDbContext<TechMarketDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 3;
+    options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<TechMarketDbContext>()
+.AddDefaultTokenProviders();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductService, ProductManager>();
